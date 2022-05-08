@@ -1,0 +1,15 @@
+{
+  "name": "@afaqy/mailer",
+  "version": "1.0.1",
+  "description": "NestJS Library",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/monatheoctocat/my_package.git"
+  },
+  "author": "Kareem Arafa <kareem.arafa@afaqy.com> (https://afaqy.com)",
+  "license": "GNU"
+}

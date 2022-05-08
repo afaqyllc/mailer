@@ -1,7 +1,6 @@
 import { MailerService as MailService } from '@nestjs-modules/mailer';
 import { Injectable, InternalServerErrorException } from '@nestjs/common';
-import { SmtpMailInterface } from './smtp-mail.interface';
-import { SentMessageInfo } from 'nodemailer';
+import { SmtpMailInterface } from '@afaqy/core';
 
 @Injectable()
 export class MailerService {
@@ -12,8 +11,8 @@ export class MailerService {
     subject,
     body,
     from,
-  }: SmtpMailInterface): Promise<SentMessageInfo> {
-    let sentMail: SentMessageInfo;
+  }: SmtpMailInterface): Promise<any> {
+    let sentMail;
     const options = {
       to: receiver, // List of receivers email address
       subject, // Subject line
@@ -23,8 +22,10 @@ export class MailerService {
     try {
       sentMail = await this.mailerService.sendMail(options);
     } catch (e) {
+      console.log({ errorWhileSending: e });
       throw new InternalServerErrorException(e);
     }
+    console.log({ sentMail });
     return sentMail;
   }
 }

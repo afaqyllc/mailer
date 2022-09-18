@@ -10,10 +10,10 @@ import { HttpModule } from '@nestjs/axios';
     HttpModule,
     MailModule.forRootAsync({
       useFactory: (configService: ConfigService) => {
-        const host = configService.get<string>('EMAIL_HOST');
-        const port = configService.get<number>('EMAIL_PORT');
-        const user = configService.get<string>('EMAIL_ID');
-        const pass = configService.get<string>('EMAIL_PASS');
+        const host = configService.get<string>('email.host');
+        const port = configService.get<number>('email.port');
+        const user = configService.get<string>('email.id');
+        const pass = configService.get<string>('email.password');
         return {
           transport: {
             host,
@@ -28,9 +28,10 @@ import { HttpModule } from '@nestjs/axios';
               rejectUnauthorized: false,
             },
             socketTimeout: 120000,
+            greetingTimeout: 120000,
           },
           defaults: {
-            from: `ZAIN ERENT <${user}>`, // outgoing email ID
+            from: `AFAQY VDX <${user}>`, // outgoing email ID
           },
           template: {
             dir: process.cwd() + '/template/',

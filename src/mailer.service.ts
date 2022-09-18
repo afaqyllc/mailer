@@ -18,7 +18,10 @@ export class MailerService {
       subject, // Subject line
       html: body, // HTML body content
     };
-    from && Object.assign(options, { from });
+    if (from) {
+      options['from'] = from;
+    }
+    console.log(options);
     try {
       sentMail = await this.mailerService.sendMail(options);
     } catch (e) {
